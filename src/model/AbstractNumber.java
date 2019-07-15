@@ -4,6 +4,8 @@ public interface AbstractNumber {
 
     int getInt();
 
-    String getNumber(int i);
+    String getString();
+
+    void setValue(int value);
 
 }

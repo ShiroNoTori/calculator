@@ -2,21 +2,9 @@ package model;
 
 public class RomanNumber implements AbstractNumber {
     private String number;
-    private static final char[] lexicon = {'I', 'V', 'X', 'L', 'C', 'D', 'M'};
 
     public RomanNumber(String str) {
         number = str;
-    }
-
-    public boolean isRoman() {
-        char[] arr = number.toCharArray();
-        int nums = 0;
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < lexicon.length; j++) {
-                if (arr[i] == lexicon[j]) nums++;
-            }
-        }
-        return nums == arr.length;
     }
 
     @Override
@@ -36,8 +24,25 @@ public class RomanNumber implements AbstractNumber {
     }
 
     @Override
-    public String getNumber(int i) {
-        return String.valueOf(new char[i]).replace('\0', 'I')
+    public String getString() {
+        return String.valueOf(new char[getInt()]).replace('\0', 'I')
+                .replace("IIIII", "V")
+                .replace("IIII", "IV")
+                .replace("VV", "X")
+                .replace("VIV", "IX")
+                .replace("XXXXX", "L")
+                .replace("XXXX", "XL")
+                .replace("LL", "C")
+                .replace("LXL", "XC")
+                .replace("CCCCC", "D")
+                .replace("CCCC", "CD")
+                .replace("DD", "M")
+                .replace("DCD", "CM");
+    }
+
+    @Override
+    public void setValue(int value) {
+        number = String.valueOf(new char[value]).replace('\0', 'I')
                 .replace("IIIII", "V")
                 .replace("IIII", "IV")
                 .replace("VV", "X")

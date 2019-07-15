@@ -7,22 +7,18 @@ public class ArabicNumber implements AbstractNumber {
         number = str;
     }
 
-    public boolean isArabic() {
-        try {
-            Integer.parseInt(number);
-        } catch (NumberFormatException e) {
-            return false;
-        }
-        return true;
-    }
-
     @Override
     public int getInt() {
         return Integer.parseInt(number);
     }
 
     @Override
-    public String getNumber(int i) {
-        return String.valueOf(i);
+    public String getString() {
+        return number;
+    }
+
+    @Override
+    public void setValue(int value) {
+        number = Integer.toString(value);
     }
 }
